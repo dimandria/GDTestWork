@@ -62,11 +62,11 @@ public class Player : MonoBehaviour
                 if (Time.time - lastAttackTime > AtackSpeed)
                 {
                     //transform.LookAt(closestEnemie.transform);
-                    transform.transform.rotation = Quaternion.LookRotation(closestEnemie.transform.position - transform.position);
+                  //  transform.transform.rotation = Quaternion.LookRotation(closestEnemie.transform.position - transform.position);
 
-                    lastAttackTime = Time.time;
-                    closestEnemie.Hp -= Damage;
-                    AnimatorController.SetTrigger("Attack");
+                    //lastAttackTime = Time.time;
+                   // closestEnemie.Hp -= Damage;
+                        // AnimatorController.SetTrigger("Attack");
                 }
             }
         }
