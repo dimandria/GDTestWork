@@ -20,7 +20,7 @@ public class SpecialEnemyFight : MonoBehaviour
     private IEnumerator DoubleAttackVision()
     {
        
-        _buttonDoubleAttack.SetActive(true);
+       
 
         yield return new WaitForSeconds(5f);
         
@@ -61,6 +61,7 @@ public class SpecialEnemyFight : MonoBehaviour
             if (distance <= AttackRange)
             {
                 StartCoroutine("DoubleAttackVision");
+                _buttonDoubleAttack.SetActive(true);
             }
             
 
