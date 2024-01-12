@@ -76,7 +76,9 @@ public class SpacialEnemy : MonoBehaviour
     void Respawn()
     {
         GameObject enemyCopy = (GameObject)Instantiate(smallEnemy);
+        GameObject enemyCopy1 = (GameObject)Instantiate(smallEnemy);
         enemyCopy.transform.position = transform.position;
+        enemyCopy1.transform.position = transform.position;
     }    
 
 

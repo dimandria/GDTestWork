@@ -24,13 +24,13 @@ public class Player : MonoBehaviour
 
     private IEnumerator DoubleAttackVision()
     {
-        var distance = Vector3.Distance(transform.position, closestEnemie.transform.position);
+       
         _buttonDoubleAttack.SetActive(true);
-        if (distance <= AttackRange)
-        {
+       
+        
             yield return new WaitForSeconds(3f);
             _buttonDoubleAttack.SetActive(false);
-        }
+        
 
        StopCoroutine("DoubleAttackVision");
         
