@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class Player : MonoBehaviour
 {
     public float Hp;
@@ -16,14 +17,29 @@ public class Player : MonoBehaviour
     private float lastAttackTime = 0;
     private bool isDead = false;
     public Animator AnimatorController;
-  
-  
-    
+    public GameObject _buttonDoubleAttack;
 
-   
+    private void Start()
+    {
+        StartCoroutine("DoubleAttackVision");
+    }
+
+    private IEnumerator DoubleAttackVision()
+    {
+        var distance = Vector3.Distance(transform.position, closestEnemie.transform.position);
+        if (distance <= AttackRange)
+        {
+            _buttonDoubleAttack.SetActive(true);
+            yield return new WaitForSeconds(1f);
+            _buttonDoubleAttack.SetActive(false);
+        }
+        StopCoroutine("DoubleAttackVision");
+    }
 
     private void Update()
     {
+
+        
         if (isDead)
         {
             return;
@@ -37,32 +53,42 @@ public class Player : MonoBehaviour
 
 
         var enemies = SceneManager.Instance.Enemies;
-        
+       
 
         for (int i = 0; i < enemies.Count; i++)
         {
             var enemie = enemies[i];
             if (enemie == null)
             {
+               
                 continue;
             }
 
             if (closestEnemie == null)
             {
+                
                 closestEnemie = enemie;
                 continue;
             }
 
             var distance = Vector3.Distance(transform.position, enemie.transform.position);
             var closestDistance = Vector3.Distance(transform.position, closestEnemie.transform.position);
+            if (distance <= AttackRange)
+            {
+                _buttonDoubleAttack.SetActive(true);
+            }
+            
 
             if (distance < closestDistance)
             {
+                
                 closestEnemie = enemie;
             }
 
         }
-
+       
+        
+        
       
     }
 
