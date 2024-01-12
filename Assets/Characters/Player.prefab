@@ -112,8 +112,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Hp: 10
   Damage: 1
+  DoubleDamage: 2
   AtackSpeed: 1
   AttackRange: 2
+  closestEnemie: {fileID: 0}
   AnimatorController: {fileID: 2111518244622979505}
 --- !u!65 &6153176986110705081
 BoxCollider:

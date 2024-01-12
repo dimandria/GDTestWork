@@ -155,39 +155,10 @@ ModelImporter:
     removeConstantScaleCurves: 0
     motionNodeName: <Root Transform>
     rigImportErrors: 
-    rigImportWarnings: "Avatar Rig Configuration mis-match. Bone length in configuration
-      does not match position in animation file:\n\t'bip_gob_ranLThigh' : position
-      error = 277.248474 mm\n\t'bip_gob_ranLCalf' : position error = 805.089417 mm\n\t'bip_gob_ranLFoot'
-      : position error = 785.622925 mm\n\t'bip_gob_ranLDigit11' : position error
-      = 547.644287 mm\n\t'bip_gob_ranRThigh' : position error = 277.248535 mm\n\t'bip_gob_ranRCalf'
-      : position error = 805.089478 mm\n\t'bip_gob_ranRFoot' : position error = 785.622925
-      mm\n\t'bip_gob_ranRDigit11' : position error = 547.644226 mm\n\t'bip_gob_ranSpine1'
-      : position error = 96.006615 mm\n\t'bip_gob_ranSpine2' : position error = 335.900238
-      mm\n\t'bip_gob_ranSpine3' : position error = 286.142181 mm\n\t'bip_gob_ranSpine4'
-      : position error = 307.495453 mm\n\t'bip_gob_ranRibcage' : position error =
-      414.360840 mm\n\t'bip_gob_ranLCollarbone' : position error = 136.331406 mm\n\t'bip_gob_ranLUpperarm'
-      : position error = 316.537781 mm\n\t'bip_gob_ranLForearm' : position error
-      = 871.779846 mm\n\t'bip_gob_ranLPalm' : position error = 818.181702 mm\n\t'bip_gob_ranLDigit31'
-      : position error = 295.868561 mm\n\t'bip_gob_ranLDigit32' : position error
-      = 209.362045 mm\n\t'ctrl_goblin arch_main' : position error = 203.480026 mm\n\t'ctrl_goblin
-      arch_arrow' : position error = 530.472290 mm\n\t'bone_goblin arch_botton01'
-      : position error = 1449.135620 mm\n\t'bone_goblin arch_main' : position error
-      = 30.574953 mm\n\t'bip_gob_ranRCollarbone' : position error = 136.331375 mm\n\t'bip_gob_ranRUpperarm'
-      : position error = 316.538086 mm\n\t'bip_gob_ranRForearm' : position error
-      = 871.781372 mm\n\t'bip_gob_ranRPalm' : position error = 818.182800 mm\n\t'bip_gob_ranRDigit11
-      1' : position error = 117.805565 mm\n\t'bip_gob_ranRDigit12' : position error
-      = 216.094742 mm\n\t'bip_gob_ranRDigit21' : position error = 304.726562 mm\n\t'bip_gob_ranRDigit22'
-      : position error = 199.447144 mm\n\t'bip_gob_ranRDigit31' : position error
-      = 295.869263 mm\n\t'bip_gob_ranRDigit32' : position error = 209.362228 mm\n\t'goblin_war_spear
-      dummy' : position error = 185.994690 mm\n\t'bip_gob_ranNeck1' : position error
-      = 3.688828 mm\n\t'bip_gob_ranNeck2' : position error = 162.877655 mm\n\t'bip_gob_ranHead'
-      : position error = 285.755981 mm\n\t'bon_gob_ran_jaw' : position error = 6.019630
-      mm\n\t'bon_gob_ran_ear R' : position error = 341.270782 mm\n\t'bon_gob_ran_ear
-      L' : position error = 353.757324 mm\nAvatar Rig Configuration mis-match. Inbetween
-      bone rotation in configuration does not match rotation in animation file:\n\t'bip_gob_ranSpine4'
-      : rotation error = 18.111574 deg\n\t'bip_gob_ranRibcage' : rotation error =
-      3.237390 deg\n\t'ctrl_goblin arch_main' : rotation error = 175.283829 deg\n\t'bip_gob_ranNeck1'
-      : rotation error = 3.195924 deg\n"
+    rigImportWarnings: "Avatar Rig Configuration mis-match. Inbetween bone rotation
+      in configuration does not match rotation in animation file:\n\t'bip_gob_ranSpine4'
+      : rotation error = 3.037074 deg\n\t'bip_gob_ranRibcage' : rotation error =
+      1.416201 deg\n"
     animationImportErrors: 
     animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
       might lower retargeting quality:\nNote: Activate translation DOF on avatar
