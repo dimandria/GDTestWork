@@ -1,10 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class SceneManager : MonoBehaviour
 {
+    public TextMeshProUGUI wawe;
+    public int currentWawe;
     public static SceneManager Instance;
 
     public Player Player;
@@ -58,8 +64,14 @@ public class SceneManager : MonoBehaviour
             Vector3 pos = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
             Instantiate(character, pos, Quaternion.identity);
         }
-        currWave++;
 
+        currentWawe++;
+
+    }
+
+    private void Update()
+    {
+        wawe.text = "Wawe:" + currentWawe;
     }
 
     public void Reset()

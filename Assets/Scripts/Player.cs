@@ -19,21 +19,16 @@ public class Player : MonoBehaviour
     public Animator AnimatorController;
     public GameObject _buttonDoubleAttack;
 
-    private void Start()
-    {
-        StartCoroutine("DoubleAttackVision");
-    }
+   
 
     private IEnumerator DoubleAttackVision()
     {
-        var distance = Vector3.Distance(transform.position, closestEnemie.transform.position);
-        if (distance <= AttackRange)
-        {
+       
             _buttonDoubleAttack.SetActive(true);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(3f);
             _buttonDoubleAttack.SetActive(false);
-        }
-        StopCoroutine("DoubleAttackVision");
+        
+       
     }
 
     private void Update()
@@ -75,7 +70,7 @@ public class Player : MonoBehaviour
             var closestDistance = Vector3.Distance(transform.position, closestEnemie.transform.position);
             if (distance <= AttackRange)
             {
-                _buttonDoubleAttack.SetActive(true);
+                StartCoroutine("DoubleAttackVision");
             }
             
 
