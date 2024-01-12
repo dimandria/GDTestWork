@@ -1,15 +1,15 @@
-
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-
-public class Enemie : MonoBehaviour
+public class SpacialEnemy : MonoBehaviour
 {
     public float Hp;
     public float Damage;
     public float AtackSpeed;
     public float AttackRange = 2;
-   
+    private UnityEngine.Object smallEnemy;
 
 
     public Animator AnimatorController;
@@ -21,8 +21,8 @@ public class Enemie : MonoBehaviour
 
     private void Start()
     {
-       
-        SceneManager.Instance.AddEnemie(this);
+        smallEnemy = Resources.Load("SmallGoblin");
+        SceneManager.Instance.AddSpecialEnemie(this);
         Agent.SetDestination(SceneManager.Instance.Player.transform.position);
     }
 
@@ -65,13 +65,19 @@ public class Enemie : MonoBehaviour
 
     private void Die()
     {
-        SceneManager.Instance.RemoveEnemie(this);
+        SceneManager.Instance.RemoveSpecialEnemie(this);
         isDead = true;
         AnimatorController.SetTrigger("Die");
+        Respawn();
         SceneManager.Instance.Player.Hp++;
 
 
-
     }
-    
+    void Respawn()
+    {
+        GameObject enemyCopy = (GameObject)Instantiate(smallEnemy);
+        enemyCopy.transform.position = transform.position;
+    }    
+
+
 }

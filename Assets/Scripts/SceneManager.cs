@@ -5,21 +5,26 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
 public class SceneManager : MonoBehaviour
 {
+   
     public TextMeshProUGUI wawe;
     public int currentWawe;
     public static SceneManager Instance;
 
     public Player Player;
     public List<Enemie> Enemies;
+    public List<SmallEnemy> smallEnemies;
+    public List<SpacialEnemy> SpecialEnemy;
     public GameObject Lose;
     public GameObject Win;
 
     private int currWave = 0;
     [SerializeField] private LevelConfig Config;
+    
 
     private void Awake()
     {
@@ -28,12 +33,24 @@ public class SceneManager : MonoBehaviour
 
     private void Start()
     {
+       
         SpawnWave();
     }
 
     public void AddEnemie(Enemie enemie)
     {
         Enemies.Add(enemie);
+       
+    }
+    public void AddSpecialEnemie(SpacialEnemy spacialEnemy)
+    {
+        SpecialEnemy.Add(spacialEnemy);
+       
+    }
+    public void AddsmallEnemie(SmallEnemy smallenemie)
+    {
+        smallEnemies.Add(smallenemie);
+       
     }
 
     public void RemoveEnemie(Enemie enemie)
@@ -43,6 +60,16 @@ public class SceneManager : MonoBehaviour
         {
             SpawnWave();
         }
+    }
+    public void RemovesmallEnemie(SmallEnemy smallEnemy)
+    {
+        smallEnemies.Remove(smallEnemy);
+        
+    }
+    public void RemoveSpecialEnemie(SpacialEnemy spacialEnemy)
+    {
+        SpecialEnemy.Remove(spacialEnemy);
+        
     }
 
     public void GameOver()
@@ -63,12 +90,15 @@ public class SceneManager : MonoBehaviour
         {
             Vector3 pos = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
             Instantiate(character, pos, Quaternion.identity);
+           
+
         }
 
         currentWawe++;
 
     }
 
+   
     private void Update()
     {
         wawe.text = "Wawe:" + currentWawe;

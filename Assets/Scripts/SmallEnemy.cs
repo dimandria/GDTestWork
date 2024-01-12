@@ -1,15 +1,15 @@
-
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-
-public class Enemie : MonoBehaviour
+public class SmallEnemy : MonoBehaviour
 {
     public float Hp;
     public float Damage;
     public float AtackSpeed;
     public float AttackRange = 2;
-   
+ 
 
 
     public Animator AnimatorController;
@@ -21,8 +21,8 @@ public class Enemie : MonoBehaviour
 
     private void Start()
     {
-       
-        SceneManager.Instance.AddEnemie(this);
+        
+        SceneManager.Instance.AddsmallEnemie(this);
         Agent.SetDestination(SceneManager.Instance.Player.transform.position);
     }
 
@@ -65,13 +65,11 @@ public class Enemie : MonoBehaviour
 
     private void Die()
     {
-        SceneManager.Instance.RemoveEnemie(this);
+        SceneManager.Instance.RemovesmallEnemie(this);
         isDead = true;
         AnimatorController.SetTrigger("Die");
-        SceneManager.Instance.Player.Hp++;
-
-
-
+        
+        
+       
     }
-    
 }

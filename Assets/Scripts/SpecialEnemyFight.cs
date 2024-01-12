@@ -1,76 +1,61 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Serialization;
 
-
-public class Player : MonoBehaviour
+public class SpecialEnemyFight : MonoBehaviour
 {
-    public float Hp;
     public float Damage;
     public float DoubleDamage;
     public float AtackSpeed;
     public float AttackRange = 2;
-    public Enemie closestEnemie = null;
-   
+     public SpacialEnemy closestSpecialEnemie = null;
+     
+     public GameObject _buttonDoubleAttack;
 
     private float lastAttackTime = 0;
     private bool isDead = false;
     public Animator AnimatorController;
-    public GameObject _buttonDoubleAttack;
-
    
-
     private IEnumerator DoubleAttackVision()
     {
        
-            _buttonDoubleAttack.SetActive(true);
-            yield return new WaitForSeconds(3f);
-            _buttonDoubleAttack.SetActive(false);
+        _buttonDoubleAttack.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        _buttonDoubleAttack.SetActive(false);
         
        
     }
-
     private void Update()
     {
 
         
-        if (isDead)
-        {
-            return;
-        }
-
-        if (Hp <= 0)
-        {
-            Die();
-            return;
-        }
-
-
-        var enemies = SceneManager.Instance.Enemies;
        
 
-        for (int i = 0; i < enemies.Count; i++)
+
+        var specialenmeies = SceneManager.Instance.SpecialEnemy;
+       
+
+        for (int i = 0; i < specialenmeies.Count; i++)
         {
             
-            var enemie = enemies[i];
-            if (enemie == null)
+            var spacialEnemy = specialenmeies[i];
+            if (spacialEnemy == null)
             {
                
                 continue;
             }
 
-            if (closestEnemie == null)
+            if (closestSpecialEnemie == null)
             {
                 
-                closestEnemie = enemie;
+                closestSpecialEnemie = spacialEnemy;
                 
                 continue;
             }
 
-            var distance = Vector3.Distance(transform.position, enemie.transform.position);
-            var closestDistance = Vector3.Distance(transform.position, closestEnemie.transform.position);
+            var distance = Vector3.Distance(transform.position, spacialEnemy.transform.position);
+            var closestDistance = Vector3.Distance(transform.position, closestSpecialEnemie.transform.position);
             if (distance <= AttackRange)
             {
                 StartCoroutine("DoubleAttackVision");
@@ -80,7 +65,7 @@ public class Player : MonoBehaviour
             if (distance < closestDistance)
             {
                 
-                closestEnemie = enemie;
+                closestSpecialEnemie = spacialEnemy;
                 
             }
 
@@ -97,12 +82,13 @@ public class Player : MonoBehaviour
 
     public void Attack()
     {
-        var distance = Vector3.Distance(transform.position, closestEnemie.transform.position);
+       
+        var distance = Vector3.Distance(transform.position, closestSpecialEnemie.transform.position);
         
         
         if (distance <= AttackRange)
         {
-            if (closestEnemie != null)
+            if (closestSpecialEnemie != null)
             {
 
                
@@ -111,14 +97,14 @@ public class Player : MonoBehaviour
                 if (Time.time - lastAttackTime > AtackSpeed)
                 {
 
-                    transform.LookAt(closestEnemie.transform);
+                    transform.LookAt(closestSpecialEnemie.transform);
                    
                     transform.transform.rotation =
-                        Quaternion.LookRotation(closestEnemie.transform.position - transform.position);
+                        Quaternion.LookRotation(closestSpecialEnemie.transform.position - transform.position);
                    
 
                     lastAttackTime = Time.time;
-                    closestEnemie.Hp -= Damage;
+                    closestSpecialEnemie.Hp -= Damage;
                    
                     AnimatorController.SetTrigger("Attack");
                 }
@@ -141,10 +127,10 @@ public class Player : MonoBehaviour
 
     public void DoubleAttack()
     {
-        var distance = Vector3.Distance(transform.position, closestEnemie.transform.position);
+        var distance = Vector3.Distance(transform.position, closestSpecialEnemie.transform.position);
         if (distance <= AttackRange)
         {
-            if (closestEnemie != null)
+            if (closestSpecialEnemie != null)
             {
 
                
@@ -153,14 +139,14 @@ public class Player : MonoBehaviour
                 if (Time.time - lastAttackTime > AtackSpeed)
                 {
 
-                    transform.LookAt(closestEnemie.transform);
+                    transform.LookAt(closestSpecialEnemie.transform);
                     transform.transform.rotation =
-                        Quaternion.LookRotation(closestEnemie.transform.position - transform.position);
+                        Quaternion.LookRotation(closestSpecialEnemie.transform.position - transform.position);
 
                     
                     
                     lastAttackTime = Time.time;
-                    closestEnemie.Hp -= DoubleDamage;
+                    closestSpecialEnemie.Hp -= DoubleDamage;
                     AnimatorController.SetTrigger("SuperAttack");
                     
                 }
@@ -168,18 +154,4 @@ public class Player : MonoBehaviour
         }
         
     }
-
-        
-    
-   
-
-    private void Die()
-    {
-        isDead = true;
-        AnimatorController.SetTrigger("Die");
-
-        SceneManager.Instance.GameOver();
-    }
-
-
 }
