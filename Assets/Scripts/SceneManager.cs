@@ -14,6 +14,7 @@ public class SceneManager : MonoBehaviour
     public TextMeshProUGUI wawe;
     public int currentWawe;
     public static SceneManager Instance;
+    public TextMeshProUGUI totalWawe;
 
     public Player Player;
     public List<Enemie> Enemies;
@@ -102,6 +103,7 @@ public class SceneManager : MonoBehaviour
     private void Update()
     {
         wawe.text = "Wawe:" + currentWawe;
+        totalWawe.text = ":" + Config.Waves.Length;
     }
 
     public void Reset()
